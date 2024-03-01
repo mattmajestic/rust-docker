@@ -2,17 +2,19 @@
 <html>
 <head>
     <title>Rust Intro</title>
-    <style>
+    <style id="theme-style">
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+            color: #333;
         }
         .container {
             width: 80%;
             margin: auto;
             padding: 20px;
+            text-align: center;
         }
         h1 {
             color: #333;
@@ -22,6 +24,10 @@
         }
         .emoji {
             font-size: 1.2em;
+        }
+        #theme-switch {
+            display: inline-block;
+            margin: 10px;
         }
     </style>
 </head>
@@ -33,6 +39,21 @@
         <p>📦 Dockerized Rust application, ready for deployment! 🚀</p>
         <p>This repository contains a simple Rust application, packaged with Docker for easy deployment. The Docker image is available on Docker Hub.</p>
         <p>Enjoy coding with Rust and Docker! 🎉</p>
+        <button id="theme-switch">Switch to Dark Mode</button>
     </div>
+    <script>
+        const themeSwitch = document.querySelector('#theme-switch');
+        themeSwitch.addEventListener('click', () => {
+            let darkMode = 'body { background-color: #333; color: #f0f0f0; } .container { color: #f0f0f0; } h1, p { color: #f0f0f0; }';
+            let lightMode = 'body { background-color: #f0f0f0; color: #333; } .container { color: #333; } h1, p { color: #666; }';
+            if (themeSwitch.textContent.includes('Dark')) {
+                document.querySelector('#theme-style').textContent = darkMode;
+                themeSwitch.textContent = 'Switch to Light Mode';
+            } else {
+                document.querySelector('#theme-style').textContent = lightMode;
+                themeSwitch.textContent = 'Switch to Dark Mode';
+            }
+        });
+    </script>
 </body>
 </html>
