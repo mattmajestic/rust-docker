@@ -3,7 +3,17 @@ name: Publish Docker Image to Docker Hub
 on:
   push:
     branches:
-      - master
+      - main
+  workflow_dispatch:
+    inputs:
+      docker_tag:
+        description: 'DockerHub Tag'
+        required: true
+        default: 'latest'
+      debug_mode:
+        description: 'Debug Mode'
+        required: false
+        default: 'false'
 
 jobs:
   build:
